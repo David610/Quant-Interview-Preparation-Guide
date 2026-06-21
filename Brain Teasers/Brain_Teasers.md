@@ -13,7 +13,7 @@ The value is the reasoning, not the memorized answer. Work each problem honestly
 
 # Problem 1: Egg Dropping Puzzle: Strategic Optimization
 
-A comprehensive guide to solving the Egg Dropping puzzle, a classic quantitative interview question used to test logic, dynamic programming, and decision-tree intuition.
+A comprehensive guide to solving the Egg Dropping puzzle, a classic quantitative interview question used to test logic, dynamic programming and decision-tree intuition.
 
 ---
 
@@ -41,7 +41,7 @@ With only one egg, you cannot afford to break it. If you drop it from floor 50 a
 
 ### Case B: 2 Eggs (Balanced Strategy)
 With two eggs, you can take larger jumps. If the first egg breaks, the second egg covers the remaining gap linearly. To keep the worst-case scenario constant, each subsequent jump must be 1 floor smaller.
-- **Strategy:** If the first drop is at floor $d$, and it survives, the next jump is $d-1$.
+- **Strategy:** If the first drop is at floor $d$ and it survives, the next jump is $d-1$.
 - **Math:** $d + (d-1) + (d-2) + \dots + 1 \geq N$.
 - **For 100 Floors:** $\frac{d(d+1)}{2} \geq 100 \implies d = 14$.
 
@@ -130,7 +130,7 @@ if __name__ == "__main__":
 
 # The Average Speed Trap
 
-A classic "sanity check" for quantitative roles. It tests whether you understand that average speed is weighted by **time**, not distance, and whether you can spot a physical impossibility.
+A classic "sanity check" for quantitative roles. It tests whether you understand that average speed is weighted by **time**, not distance and whether you can spot a physical impossibility.
 
 ---
 
@@ -153,7 +153,7 @@ $$\frac{10\text{ km/h} + X\text{ km/h}}{2} = 20\text{ km/h} \implies X = 30\text
 
 This is **wrong**. Speed is $\text{Distance} / \text{Time}$. You spend more time on slow laps than on fast laps, so the slow laps carry a "heavier" weight in the average.
 
-> **Why the trap works:** The arithmetic mean assumes equal weighting. Here the weights are the *times*, not the distances, and the slow lap eats most of the time budget.
+> **Why the trap works:** The arithmetic mean assumes equal weighting. Here the weights are the *times*, not the distances and the slow lap eats most of the time budget.
 
 ---
 
