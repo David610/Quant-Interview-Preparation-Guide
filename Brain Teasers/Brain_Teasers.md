@@ -125,3 +125,102 @@ if __name__ == "__main__":
     test_cases = [(1, 100), (2, 100), (3, 100), (10, 100)]
     for e, f in test_cases:
         print(f"Eggs: {e}, Floors: {f} -> Min Drops: {solve_egg_dropping(e, f)}")
+```
+
+
+# 🏃 The Average Speed Trap
+
+A classic "sanity check" for quantitative roles. It tests whether you understand that average speed is weighted by **time**, not distance, and whether you can spot a physical impossibility.
+
+---
+
+## 1. Problem Statement
+
+You are given:
+- A track of **$10\text{ km}$ per lap**, run for **2 laps** ($20\text{ km}$ total).
+- **Lap 1** is run at an average speed of **$10\text{ km/h}$**.
+- A **target average** of **$20\text{ km/h}$** over the full $20\text{ km}$.
+
+**The Objective:** Find the speed required on Lap 2 to hit the target average.
+
+---
+
+## 2. The Intuition Trap
+
+Most people instinctively take the arithmetic mean:
+
+$$\frac{10\text{ km/h} + X\text{ km/h}}{2} = 20\text{ km/h} \implies X = 30\text{ km/h}$$
+
+This is **wrong**. Speed is $\text{Distance} / \text{Time}$. You spend more time on slow laps than on fast laps, so the slow laps carry a "heavier" weight in the average.
+
+> **Why the trap works:** The arithmetic mean assumes equal weighting. Here the weights are the *times*, not the distances, and the slow lap eats most of the time budget.
+
+---
+
+## 3. The Time-Budget Proof
+
+The cleanest way to solve this is to track time, not speed.
+
+### Time spent on Lap 1
+$$t_1 = \frac{\text{Distance}}{\text{Speed}} = \frac{10\text{ km}}{10\text{ km/h}} = 1\text{ hour}$$
+
+### Total time allowed for the target
+$$t_{total} = \frac{\text{Total Distance}}{\text{Target Speed}} = \frac{20\text{ km}}{20\text{ km/h}} = 1\text{ hour}$$
+
+### Time remaining for Lap 2
+$$t_2 = t_{total} - t_1 = 1\text{ hour} - 1\text{ hour} = 0\text{ hours}$$
+
+**Conclusion:** To average $20\text{ km/h}$, Lap 2 must be completed in **zero time**. This is impossible at any finite speed.
+
+---
+
+## 4. The General Solution (Harmonic Mean)
+
+When the two distances are equal, the average speed $v_{avg}$ is the **harmonic mean** of the two lap speeds:
+
+$$v_{avg} = \frac{2 \cdot v_1 \cdot v_2}{v_1 + v_2}$$
+
+Solving for $v_2$:
+
+$$\boxed{v_2 = \frac{v_1 \cdot v_{avg}}{2v_1 - v_{avg}}}$$
+
+> **The breaking point:** When $v_{avg} = 2v_1$, the denominator becomes zero, so $v_2 \to \infty$. You can never average more than **twice** your first-lap speed, no matter how fast Lap 2 is.
+
+---
+
+## 5. Summary Table ($v_1 = 10\text{ km/h}$)
+
+| Target Avg ($v_{avg}$) | Denominator ($2v_1 - v_{avg}$) | Required Lap 2 ($v_2$) |
+| :--- | :--- | :--- |
+| 12 km/h | 8 | 15 km/h |
+| 15 km/h | 5 | 30 km/h |
+| 18 km/h | 2 | 90 km/h |
+| 19 km/h | 1 | 190 km/h |
+| 20 km/h | 0 | **Impossible** |
+
+---
+
+## 6. Python Implementation
+
+```python
+def calculate_required_speed(v1: float, v_target: float) -> float:
+    """
+    Calculates the Lap 2 speed needed to reach a target average.
+    Assumes both laps have equal distance.
+    Returns infinity when the target is physically impossible.
+    """
+    denominator = 2 * v1 - v_target
+    if denominator <= 0:
+        return float('inf')  # Target >= 2 * v1 is impossible
+    return (v1 * v_target) / denominator
+
+
+if __name__ == "__main__":
+    v1 = 10
+    for v_target in [12, 15, 18, 19, 20]:
+        v2 = calculate_required_speed(v1, v_target)
+        if v2 == float('inf'):
+            print(f"Target {v_target} km/h is impossible (Lap 1 was {v1} km/h).")
+        else:
+            print(f"Target {v_target} km/h -> Lap 2 must be {v2} km/h")
+```
