@@ -128,7 +128,7 @@ if __name__ == "__main__":
 ```
 
 
-# 🏃 The Average Speed Trap
+# The Average Speed Trap
 
 A classic "sanity check" for quantitative roles. It tests whether you understand that average speed is weighted by **time**, not distance, and whether you can spot a physical impossibility.
 
