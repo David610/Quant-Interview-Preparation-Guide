@@ -222,7 +222,7 @@ Also:
 $$
 E[X]=np,
 \qquad
-\operatorname{Var}(X)=np(1-p).
+\text{Var}(X)=np(1-p).
 $$
 
 ---
@@ -238,13 +238,13 @@ Pairwise-independent Bernoulli variables need not be jointly independent. Their 
 If:
 
 $$
-X\mid P\sim\operatorname{Binomial}(n,P),
+X\mid P\sim\text{Binomial}(n,P),
 $$
 
 where $P$ is random, then $X$ is generally a **mixture of binomials**, not:
 
 $$
-\operatorname{Binomial}(n,E[P]).
+\text{Binomial}(n,E[P]).
 $$
 
 ### Conditioning Destroys Independence
@@ -262,7 +262,7 @@ From:
 $$
 E[X]=\mu,
 \qquad
-\operatorname{Var}(X)=v,
+\text{Var}(X)=v,
 $$
 
 we obtain:
@@ -290,7 +290,7 @@ and $n$ is a positive integer.
 Suppose:
 
 $$
-X\sim\operatorname{Binomial}(n,p),
+X\sim\text{Binomial}(n,p),
 $$
 
 with:
@@ -298,7 +298,7 @@ with:
 $$
 E[X]=7.2,
 \qquad
-\operatorname{Var}(X)=5.04.
+\text{Var}(X)=5.04.
 $$
 
 Find $n$ and $p$.
@@ -308,7 +308,7 @@ Find $n$ and $p$.
 Since:
 
 $$
-\operatorname{Var}(X)=E[X](1-p),
+\text{Var}(X)=E[X](1-p),
 $$
 
 we get:
@@ -332,7 +332,7 @@ $$
 Thus:
 
 $$
-\boxed{X\sim\operatorname{Binomial}(24,0.3)}
+\boxed{X\sim\text{Binomial}(24,0.3)}
 $$
 
 ---
@@ -360,8 +360,7 @@ Is $S$ binomial?
 The possible outcomes are:
 
 $$
-(U,V,W)\in
-{(0,0,0),(0,1,1),(1,0,1),(1,1,0)}.
+(U,V,W)\in\{(0,0,0),(0,1,1),(1,0,1),(1,1,0)\}.
 $$
 
 Therefore:
@@ -389,10 +388,10 @@ A random variable $P$ equals $0.2$ or $0.8$, each with probability $1/2$.
 Conditional on $P$:
 
 $$
-X\mid P\sim\operatorname{Binomial}(n,P).
+X\mid P\sim\text{Binomial}(n,P).
 $$
 
-Find $E[X]$ and $\operatorname{Var}(X)$.
+Find $E[X]$ and $\text{Var}(X)$.
 
 ### Solution
 
@@ -405,23 +404,13 @@ $$
 Using total variance:
 
 $$
-\operatorname{Var}(X)
-=====================
-
-E[\operatorname{Var}(X\mid P)]
-+
-\operatorname{Var}(E[X\mid P]).
+\text{Var}(X) = E[\text{Var}(X\mid P)] + \text{Var}(E[X\mid P]).
 $$
 
 Therefore:
 
 $$
-\operatorname{Var}(X)
-=====================
-
-nE[P(1-P)]
-+
-n^2\operatorname{Var}(P).
+\text{Var}(X) = nE[P(1-P)] + n^2\text{Var}(P).
 $$
 
 Here:
@@ -429,21 +418,21 @@ Here:
 $$
 E[P(1-P)]=0.16,
 \qquad
-\operatorname{Var}(P)=0.09.
+\text{Var}(P)=0.09.
 $$
 
 Thus:
 
 $$
 \boxed{
-\operatorname{Var}(X)=0.16n+0.09n^2
+\text{Var}(X)=0.16n+0.09n^2
 }
 $$
 
 This is not the variance of:
 
 $$
-\operatorname{Binomial}\left(n,\frac12\right),
+\text{Binomial}\left(n,\frac12\right),
 $$
 
 which would be $0.25n$.
@@ -455,9 +444,9 @@ which would be $0.25n$.
 Let:
 
 $$
-X\sim\operatorname{Binomial}(n,p),
+X\sim\text{Binomial}(n,p),
 \qquad
-Y\sim\operatorname{Binomial}(m,p),
+Y\sim\text{Binomial}(m,p),
 $$
 
 independently.
@@ -473,20 +462,13 @@ $$
 For valid $k$:
 
 $$
-P(X=k\mid X+Y=r)
-================
-
-\frac{P(X=k,Y=r-k)}{P(X+Y=r)}.
+P(X=k\mid X+Y=r) = \frac{P(X=k,Y=r-k)}{P(X+Y=r)}.
 $$
 
 After cancelling the powers of $p$ and $1-p$:
 
 $$
-P(X=k\mid X+Y=r)
-================
-
-\frac{\binom nk\binom m{r-k}}
-{\binom{n+m}r}.
+P(X=k\mid X+Y=r) = \frac{\binom nk\binom m{r-k}}{\binom{n+m}r}.
 $$
 
 Therefore:
@@ -495,7 +477,7 @@ $$
 \boxed{
 X\mid X+Y=r
 \sim
-\operatorname{Hypergeometric}(n+m,r,n)
+\text{Hypergeometric}(n+m,r,n)
 }
 $$
 
@@ -516,7 +498,7 @@ Suppose:
 
 $$
 S=\sum_{i=1}^nX_i
-\sim\operatorname{Binomial}(n,p).
+\sim\text{Binomial}(n,p).
 $$
 
 Prove that:
@@ -530,10 +512,7 @@ $$
 The probability-generating function of $S$ is:
 
 $$
-G_S(z)
-======
-
-\prod_{i=1}^n(1-p_i+p_i z).
+G_S(z) = \prod_{i=1}^n(1-p_i+p_i z).
 $$
 
 Because $S$ is binomial:
@@ -557,10 +536,7 @@ $$
 Therefore all roots must be equal:
 
 $$
--\frac{1-p_i}{p_i}
-==================
-
--\frac{1-p}{p}.
+-\frac{1-p_i}{p_i} = -\frac{1-p}{p}.
 $$
 
 Hence:
