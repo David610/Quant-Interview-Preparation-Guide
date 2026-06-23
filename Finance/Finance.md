@@ -1,4 +1,3 @@
-```markdown
 # Finance
 
 ## Market Making
@@ -10,9 +9,9 @@ Market making is the process of providing liquidity by continuously quoting:
 
 The difference between these prices is the **bid–ask spread**:
 
-\[
+$$
 \text{Spread} = \text{Ask} - \text{Bid}
-\]
+$$
 
 Market makers aim to earn the spread while managing inventory risk, adverse selection, market risk, execution risk
 
