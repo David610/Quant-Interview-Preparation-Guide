@@ -97,17 +97,13 @@ $$
 Using:
 
 $$
-\text{Var}(S)
-=
-np(1-p)\left[1+(n-1)\rho\right],
+\text{Var}(S) = np(1-p)\left[1+(n-1)\rho\right],
 $$
 
 we get:
 
 $$
-\text{Var}(S)
-=
-12(0.3)(0.7)\left[1+11(0.05)\right].
+\text{Var}(S) = 12(0.3)(0.7)\left[1+11(0.05)\right].
 $$
 
 Therefore:
@@ -135,11 +131,7 @@ $$
 but:
 
 $$
-P(X=1,Y=1)
-=
-\frac12(0.3^2)+\frac12(0.7^2)
-=
-0.29.
+P(X=1,Y=1) = \frac12(0.3^2)+\frac12(0.7^2) = 0.29.
 $$
 
 Since:
@@ -161,9 +153,7 @@ They are conditionally independent but marginally dependent.
 Let:
 
 $$
-X\sim\text{Bernoulli}(p),
-\qquad
-\text{Var}(X)=0.09.
+X\sim\text{Bernoulli}(p), \qquad \text{Var}(X)=0.09.
 $$
 
 A trade pays $4$ if $X=1$ and $-2$ otherwise. Find $E[Y]$.
