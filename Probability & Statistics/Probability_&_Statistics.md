@@ -2,10 +2,10 @@
 
 ## Question 1: Recover $p$
 
-Let $X\sim\operatorname{Bernoulli}(p)$ and:
+Let $X\sim\text{Bernoulli}(p)$ and:
 
 $$
-\operatorname{Var}(X)=0.24.
+\text{Var}(X)=0.24.
 $$
 
 Find $p$.
@@ -37,7 +37,7 @@ $$
 and:
 
 $$
-\operatorname{Cov}(X,Y)=0.
+\text{Cov}(X,Y)=0.
 $$
 
 Are they independent?
@@ -86,7 +86,7 @@ $$
 S=\sum_{i=1}^{12}X_i,
 $$
 
-find $E[S]$ and $\operatorname{Var}(S)$.
+find $E[S]$ and $\text{Var}(S)$.
 
 ### Solution
 
@@ -97,7 +97,7 @@ $$
 Using:
 
 $$
-\operatorname{Var}(S)
+\text{Var}(S)
 =
 np(1-p)\left[1+(n-1)\rho\right],
 $$
@@ -105,7 +105,7 @@ $$
 we get:
 
 $$
-\operatorname{Var}(S)
+\text{Var}(S)
 =
 12(0.3)(0.7)\left[1+11(0.05)\right].
 $$
@@ -113,7 +113,7 @@ $$
 Therefore:
 
 $$
-\boxed{\operatorname{Var}(S)=3.906}
+\boxed{\text{Var}(S)=3.906}
 $$
 
 ---
@@ -161,9 +161,9 @@ They are conditionally independent but marginally dependent.
 Let:
 
 $$
-X\sim\operatorname{Bernoulli}(p),
+X\sim\text{Bernoulli}(p),
 \qquad
-\operatorname{Var}(X)=0.09.
+\text{Var}(X)=0.09.
 $$
 
 A trade pays $4$ if $X=1$ and $-2$ otherwise. Find $E[Y]$.
