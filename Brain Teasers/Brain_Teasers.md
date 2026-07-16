@@ -224,3 +224,228 @@ if __name__ == "__main__":
         else:
             print(f"Target {v_target} km/h -> Lap 2 must be {v2} km/h")
 ```
+
+# Win by a Small Margin
+
+A game-theory puzzle about invariants, symmetry and edge cases.
+
+---
+
+# Problem 2: Win by a small margin
+
+---
+
+## 1. Problem Statement
+
+Two players take marbles from a pile of **101 marbles**.
+
+* Player 1 moves first.
+* Each player must take **1 to 5 marbles** per turn.
+* The player with more marbles wins.
+* If the winner leads by **more than 5 marbles**, the winner is executed.
+
+**Objective:** Determine whether a player can guarantee a safe win.
+
+---
+
+## 2. Strategy
+
+Player 1 can guarantee a safe win:
+
+1. Take **5 marbles** first.
+2. After every move by Player 2, take the **same number** whenever possible.
+3. If fewer marbles remain than Player 2 just took, take all remaining marbles.
+
+The pattern is direct copying, not making each pair sum to 6.
+
+---
+
+## 3. The Invariant
+
+After Player 1 takes 5:
+
+$$
+P_1-P_2=5.
+$$
+
+If Player 2 then takes (x) marbles, where
+
+$$
+1\leq x\leq5,
+$$
+
+the lead becomes:
+
+$$
+5-x.
+$$
+
+If Player 1 copies by taking (x), the lead returns to:
+
+$$
+(5-x)+x=5.
+$$
+
+Therefore, after every complete copied pair, Player 1 is exactly 5 marbles ahead.
+
+> Player 1 leads by 5 only after completing the copied response. During Player 2's turn, the lead is smaller.
+
+---
+
+## 4. The Main Trap
+
+A common concern is:
+
+> What if Player 1 is already 5 ahead and must still take the final marble?
+
+That cannot happen.
+
+Before Player 1 moves, Player 2 has just taken (x) marbles, so the lead has already fallen to:
+
+$$
+5-x.
+$$
+
+For example, if Player 2 takes 1 and leaves 1, the lead changes from:
+
+$$
+5-1=4
+$$
+
+to:
+
+$$
+4+1=5.
+$$
+
+Player 1 never finishes 6 ahead.
+
+---
+
+## 5. Final Incomplete Pair
+
+Suppose Player 2 takes (x) marbles and leaves (r) marbles, where:
+
+$$
+0\leq r<x.
+$$
+
+If (r>0), Player 1 takes all (r) remaining marbles. The final lead is:
+
+$$
+\boxed{D=5-x+r}.
+$$
+
+Since (r<x):
+
+$$
+D<5.
+$$
+
+And since (x\leq5) and (r\geq0):
+
+$$
+D\geq0.
+$$
+
+Therefore:
+
+$$
+0\leq D\leq5.
+$$
+
+If (r=0), Player 2 takes the final marbles and:
+
+$$
+D=5-x,
+$$
+
+which is also at most 5.
+
+---
+
+## 6. Why There Is No Tie
+
+Because the total is odd:
+
+$$
+P_1+P_2=101,
+$$
+
+the players cannot finish with equal totals.
+
+Also, (P_1-P_2) must be odd. Therefore, the only possible positive safe margins are:
+
+$$
+\boxed{1,\ 3,\ \text{or}\ 5}.
+$$
+
+So Player 1 always wins safely.
+
+---
+
+## 7. Edge-Case Example
+
+Suppose:
+
+* Player 1 is 5 ahead.
+* Player 2 takes 4.
+* 2 marbles remain.
+
+The lead becomes:
+
+$$
+5-4=1.
+$$
+
+Player 1 takes the final 2:
+
+$$
+1+2=3.
+$$
+
+Player 1 wins by 3 and is safe.
+
+---
+
+## 8. General Pattern
+
+For any odd starting number (C\geq5), the same strategy works.
+
+After Player 1 takes 5:
+
+$$
+C-5
+$$
+
+marbles remain, which is even.
+
+Each copied pair removes:
+
+$$
+x+x=2x,
+$$
+
+also even.
+
+Thus the remaining pile stays even after each complete copied pair, and the same final-edge-case argument applies.
+
+> **Pattern:** Create a small initial lead, preserve it through symmetry, and calculate the score difference again before the final move.
+
+---
+
+## 9. Final Answer
+
+$$
+\boxed{\text{Player 1 takes 5 first, then copies Player 2.}}
+$$
+
+If exact copying is impossible at the end, Player 1 takes all remaining marbles.
+
+The final margin is always:
+
+$$
+\boxed{1,\ 3,\ \text{or}\ 5}.
+$$
+
+Therefore, Player 1 guarantees a win without being executed.
